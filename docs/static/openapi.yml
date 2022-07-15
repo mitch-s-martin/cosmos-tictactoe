@@ -4,6 +4,42 @@ info:
   name: ''
   description: ''
 paths:
+  /alice/tictactoe/tictactoe/next_game:
+    get:
+      summary: Queries a NextGame by index.
+      operationId: AliceTictactoeTictactoeNextGame
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              NextGame:
+                type: object
+                properties:
+                  idValue:
+                    type: string
+                    format: uint64
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
   /alice/tictactoe/tictactoe/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -30462,9 +30498,24 @@ paths:
       tags:
         - Query
 definitions:
+  alice.tictactoe.tictactoe.NextGame:
+    type: object
+    properties:
+      idValue:
+        type: string
+        format: uint64
   alice.tictactoe.tictactoe.Params:
     type: object
     description: Params defines the parameters for the module.
+  alice.tictactoe.tictactoe.QueryGetNextGameResponse:
+    type: object
+    properties:
+      NextGame:
+        type: object
+        properties:
+          idValue:
+            type: string
+            format: uint64
   alice.tictactoe.tictactoe.QueryParamsResponse:
     type: object
     properties:

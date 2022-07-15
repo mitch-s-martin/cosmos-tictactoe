@@ -1,0 +1,9 @@
+syntax = "proto3";
+package alice.tictactoe.tictactoe;
+
+option go_package = "github.com/alice/tictactoe/x/tictactoe/types";
+
+message NextGame {
+  uint64 idValue = 1; 
+  
+}

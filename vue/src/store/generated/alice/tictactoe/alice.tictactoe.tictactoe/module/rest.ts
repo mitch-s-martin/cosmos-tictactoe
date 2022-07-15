@@ -20,10 +20,19 @@ export interface RpcStatus {
   details?: ProtobufAny[];
 }
 
+export interface TictactoeNextGame {
+  /** @format uint64 */
+  idValue?: string;
+}
+
 /**
  * Params defines the parameters for the module.
  */
 export type TictactoeParams = object;
+
+export interface TictactoeQueryGetNextGameResponse {
+  NextGame?: TictactoeNextGame;
+}
 
 /**
  * QueryParamsResponse is response type for the Query/Params RPC method.
@@ -229,6 +238,22 @@ export class HttpClient<SecurityDataType = unknown> {
  * @version version not set
  */
 export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDataType> {
+  /**
+   * No description
+   *
+   * @tags Query
+   * @name QueryNextGame
+   * @summary Queries a NextGame by index.
+   * @request GET:/alice/tictactoe/tictactoe/next_game
+   */
+  queryNextGame = (params: RequestParams = {}) =>
+    this.request<TictactoeQueryGetNextGameResponse, RpcStatus>({
+      path: `/alice/tictactoe/tictactoe/next_game`,
+      method: "GET",
+      format: "json",
+      ...params,
+    });
+
   /**
    * No description
    *
