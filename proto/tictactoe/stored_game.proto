@@ -1,0 +1,14 @@
+syntax = "proto3";
+package alice.tictactoe.tictactoe;
+
+option go_package = "github.com/alice/tictactoe/x/tictactoe/types";
+
+message StoredGame {
+  string index = 1; 
+  string game = 2; 
+  string turn = 3; 
+  string x = 4; 
+  string o = 5; 
+  
+}
+

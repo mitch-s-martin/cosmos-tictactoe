@@ -4,6 +4,7 @@ package alice.tictactoe.tictactoe;
 import "gogoproto/gogo.proto";
 import "tictactoe/params.proto";
 import "tictactoe/next_game.proto";
+import "tictactoe/stored_game.proto";
 // this line is used by starport scaffolding # genesis/proto/import
 
 option go_package = "github.com/alice/tictactoe/x/tictactoe/types";
@@ -12,5 +13,6 @@ option go_package = "github.com/alice/tictactoe/x/tictactoe/types";
 message GenesisState {
   Params params = 1 [(gogoproto.nullable) = false];
   NextGame nextGame = 2;
+  repeated StoredGame storedGameList = 3 [(gogoproto.nullable) = false];
   // this line is used by starport scaffolding # genesis/proto/state
 }
